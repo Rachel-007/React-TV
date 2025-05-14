@@ -1,5 +1,5 @@
 .shows {
-  display: flex;
+  display: grid;
 }
 
 .show {

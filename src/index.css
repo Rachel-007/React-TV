@@ -26,3 +26,15 @@ header {
 button {
   padding: 0.25rem 0.5rem;
 }
+
+nav {
+  grid-auto-flow: column;
+  justify-content: start;
+  align-items: center;
+}
+.episode ol {
+  list-style: none;
+}
+.episode li {
+  padding: 0.5rem;
+}
