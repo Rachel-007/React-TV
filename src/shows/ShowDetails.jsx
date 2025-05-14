@@ -1,11 +1,14 @@
+import React, { useState } from "react";
 import "./shows.css";
-
+import EpisodeList from "../episodes/EpisodeList";
+import EpisodeDetails from "../episodes/EpisodeDetails";
 /** Allows users to browse through the episodes of the given show */
-export default function ShowDetails({ show }) {
-  if (!show) {
+export default function ShowDetails({ selectedShow }) {
+  const [selectedEpisode, setSelectedEpisode] = useState(null);
+
+  if (!selectedShow) {
     return (
       <section className="show-details">
-        <h2>Urban Legends</h2>
         <p>Select a show to learn more.</p>
       </section>
     );
@@ -13,10 +16,13 @@ export default function ShowDetails({ show }) {
 
   return (
     <section className="show-details">
-      <h2>Urban Legends {show.number}</h2>
-      <h3>{show.title}</h3>
-      <p>{show.description}</p>
-      <button>Watch now</button>
+      <EpisodeList
+        name={selectedShow.name}
+        episodes={selectedShow.episodes}
+        selectedEpisode={selectedEpisode}
+        setSelectedEpisode={setSelectedEpisode}
+      />
+      <EpisodeDetails episode={selectedEpisode} />
     </section>
   );
 }

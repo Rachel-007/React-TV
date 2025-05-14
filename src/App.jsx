@@ -9,45 +9,22 @@ import ShowList from "./shows/ShowList.jsx";
 
 export default function App() {
   const [selectedShow, setSelectedShow] = useState(null);
+  console.log(selectedShow);
+  const [shows] = useState(tvShows);
+
   // const [selectedEpisode, setSelectedEpisode] = useState(null);
   return (
     <>
-      <head>
-        <body>
-          <div id="root">
-            <h1>React TV</h1>
-            <nav className="shows">
-              <a className="show">Galactic Odyssey</a>
-              <a className="show">Urban Legends</a>
-              <a className="show">Culinary Journeys</a>
-              <a className="show">Code Breakers</a>
-              <a className="show">Pixel Wars</a>
-            </nav>
-          </div>
+      <header>
+        <h1>React TV</h1>
+        <nav className="shows">
+          <ShowList shows={shows} setSelectedShow={setSelectedShow} />
+        </nav>
+      </header>
 
-          <main>
-            <div className="shows-details">
-              <section className="episodes">
-                <h2>Episodes</h2>
-                <ol>
-                  <li>Episode 1</li>
-                  <li>Episode 2</li>
-                  <li>Episode 3</li>
-                  <li>Episode 4</li>
-                  <li>Episode 5</li>
-                  <li>Episode 6</li>
-                  <li>Episode 7</li>
-                  <li>Episode 8</li>
-                </ol>
-              </section>
-            </div>
-          </main>
-        </body>
-      </head>
-
-      {/* You may want to pass tvShows and setSelectedShow to ShowList, and selectedShow to ShowDetails */}
-      <ShowList shows={tvShows} setSelectedShow={setSelectedShow} />
-      <ShowDetails selectedShow={selectedShow} selectedEpisode={null} />
+      <main>
+        <ShowDetails key={selectedShow?.name} selectedShow={selectedShow} />
+      </main>
     </>
   );
 }

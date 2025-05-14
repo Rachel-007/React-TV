@@ -1,26 +1,16 @@
 import "./shows.css";
 
 /** A list of episode names that allows the user to select an episode */
-export default function ShowList({
-  name,
-  shows,
-  selectedShow,
-  setSelectedShow,
-}) {
+export default function ShowList({ shows, selectedShow, setSelectedShow }) {
   return (
-    <section className="shows">
-      <h2>{name}</h2>
-      <ol>
-        {shows.map((show) => (
-          <li
-            key={show.number}
-            onClick={() => setSelectedShow(show)}
-            className={show === selectedShow ? "selected" : ""}
-          >
-            {show.title}
-          </li>
-        ))}
-      </ol>
-    </section>
+    <nav>
+      {" "}
+      {shows.map((show) => (
+        <a key={show.name} onClick={() => setSelectedShow(show)}>
+          {" "}
+          {show.name}
+        </a>
+      ))}
+    </nav>
   );
 }
